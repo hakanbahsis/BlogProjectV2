@@ -4,6 +4,6 @@ using Entity.DTOs.Articles;
 
 public interface IArticleService
 {
-    Task<List<ArticleDto>> GetAllArticlesAsync();
+    Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync();
 }
 
