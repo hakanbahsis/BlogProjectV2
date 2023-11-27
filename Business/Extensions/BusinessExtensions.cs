@@ -1,4 +1,5 @@
-﻿using Business.Services.ArticleService.Abstract;
+﻿using Business.Helpers.Images;
+using Business.Services.ArticleService.Abstract;
 using Business.Services.ArticleService.Concrete;
 using Business.Services.CategoryService.Abstract;
 using Business.Services.CategoryService.Concrete;
@@ -27,6 +28,7 @@ public static class BusinessExtensions
 
         services.AddScoped<IArticleService, ArticleManager>();
         services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<IImageHelper, ImageHelper>();
 
         return services;
     }

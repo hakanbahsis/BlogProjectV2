@@ -25,14 +25,28 @@
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                         <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
-
                     </div>
-                    <div class="form-group mb-1">
+                                 
+                    <div class="form-group mb-1 ">
+                        <label asp-for="Photo" class="form-label">Fotoğraf Seçiniz</label>
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                        <input asp-for="Photo" type="file" accept="image/*" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+
+                    
+                    <div class="form-group mb-1 col-md-4" >
+                        <label asp-for="Image.FileName" class="form-label d-block">Mevcut Fotoğraf</label>
+                        <img style="height:25em; width:25em;" src="~/images/@Model.Image.FileName" alt="@Model.Title" />
+                    </div>
+                    
+                    <div class="form-group mb-1 col-md-8">
                         <label asp-for="Content" class="form-label">İçerik</label>
                         <span asp-validation-for="Content" class="text-danger"></span>
-                        <textarea asp-for="Content" type="text" class="form-control" id="defaultFormControlInput" placeholder="İçerik" aria-describedby="defaultFormControlHelp" style="min-height:300px;"></textarea>
+                        <textarea asp-for="Content" type="text" class="form-control" id="defaultFormControlInput" placeholder="İçerik" aria-describedby="defaultFormControlHelp" style="min-height:25em;"></textarea>
                     </div>
-
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Güncelle</button>
                     </div>
