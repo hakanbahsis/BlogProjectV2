@@ -3,6 +3,7 @@ using DataAccess.Context;
 using DataAccess.Extensions;
 using Entity.Entities;
 using Microsoft.AspNetCore.Identity;
+using NToastNotify;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,14 @@ builder.Services.LoadBusinessExtension();
 builder.Services.AddSession();
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews()
+    .AddNToastNotifyToastr(new ToastrOptions()
+    {
+        PositionClass=ToastPositions.TopRight,
+        TimeOut=5000,
+        ProgressBar=true
+    })
+    .AddRazorRuntimeCompilation();
 
 builder.Services.AddIdentity<AppUser, AppRole>(opt =>
 {
@@ -49,7 +57,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseNToastNotify();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

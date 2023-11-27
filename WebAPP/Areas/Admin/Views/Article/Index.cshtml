@@ -4,13 +4,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Makele Yönetimi /</span> Makaleler</h4>
+<div class="container-xxl flex-grow-1 container">
+    <h4 class="fw-bold py-3"><span class="text-muted fw-light">Makele Yönetimi /</span> Makaleler</h4>
 </div>
 
 <div class="card">
-    <h5 class="card-header">Table Basic</h5>
-    <div class="table-responsive text-nowrap">
+    @* <h5 class="card-header">Table Basic</h5>*@
+    <div class="col-3 m-1">
+
+        <a class="btn btn-success" asp-area="Admin" asp-controller="Article" asp-action="Add">Makale Ekle<i class="bx bx-plus"></i></a>
+    </div>
+    <div class="table-responsive text-nowrap m-5">
         <table class="table table-bordered" id="articlesTable" width="100%" cellpadding="0">
             <thead>
                 <tr>
@@ -40,8 +44,11 @@
                         <th>@item.Category.Name</th>
                         <th>@item.CreatedDate.ToShortDateString()</th>
                         <th>@item.CreatedBy</th>
-                        <th>@(item.IsDeleted ? "Silinmiş":"Aktif")</th>
-                        <th></th>
+                        <th>@(item.IsDeleted ? "Silinmiş" : "Aktif")</th>
+                        <th>
+                            <a class="btn btn-sm btn-warning" data-id="@item.Id" asp-area="Admin" asp-controller="Article" asp-action="Update" asp-route-articleId="@item.Id"><i class="bx bx-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" data-id="@item.Id" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-articleId="@item.Id"><i class="bx bx-minus-circle"></i></a>
+                        </th>
                     </tr>
                 }
             </tbody>
