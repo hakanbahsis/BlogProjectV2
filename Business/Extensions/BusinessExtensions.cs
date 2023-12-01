@@ -1,9 +1,9 @@
 ﻿using Business.Helpers.Images;
 using Business.Services.ArticleService.Abstract;
 using Business.Services.ArticleService.Concrete;
+using Business.Services.ArticleService.Validation;
 using Business.Services.CategoryService.Abstract;
 using Business.Services.CategoryService.Concrete;
-using Business.Services.Validation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;

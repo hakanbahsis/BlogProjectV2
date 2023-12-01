@@ -1,0 +1,66 @@
+﻿@model List<UserDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container">
+    <h4 class="fw-bold py-3"><span class="text-muted fw-light">Kullanıcı Yönetimi /</span> Kullanıcılar</h4>
+</div>
+
+<div class="card">
+    @* <h5 class="card-header">Table Basic</h5>*@
+    <div class="col-3 m-1">
+
+        <a class="btn btn-success" asp-area="Admin" asp-controller="User" asp-action="Add">Kullanıcı Ekle<i class="bx bx-plus"></i></a>
+    </div>
+    <div class="table-responsive text-nowrap m-5">
+        <table class="table table-bordered" id="usersTable" width="100%" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>Email</th>
+                    <th>Telefon</th>
+                    <th>Rol</th>
+                    <th>Bağlantı Hataları</th>
+                    <th>Email Doğrulaması</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>İsim</th>
+                    <th>Soyisim</th>
+                    <th>Email</th>
+                    <th>Telefon</th>
+                    <th>Rol</th>
+                    <th>Bağlantı Hataları</th>
+                    <th>Email Doğrulaması</th>
+                    <th>İşlemler</th>
+                </tr>
+            </tfoot>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr name="@item.Id">
+                        <th>@item.FirstName</th>
+                        <th>@item.LastName</th>
+                        <th>@item.Email</th>
+                        <th>@item.PhoneNumber</th>
+                        <th>@item.Role</th>
+                        <th>@(item.EmailConfirmed ? "Doğrulanmış" : "Doğrulanmamış")</th>
+                        <th>@item.AccessFailedCount</th>
+                        <th>
+                            <a class="btn btn-sm btn-warning" data-id="@item.Id" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-userId="@item.Id"><i class="bx bx-edit"></i></a>
+                            <a class="btn btn-sm btn-danger" data-id="@item.Id" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userId="@item.Id"><i class="bx bx-minus-circle"></i></a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/userIndex.js"></script>
+}

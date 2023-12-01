@@ -5,7 +5,6 @@ using Business.Services.CategoryService.Abstract;
 using Entity.DTOs.Articles;
 using Entity.Entities;
 using FluentValidation;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using WebAPP.ResultMessages;

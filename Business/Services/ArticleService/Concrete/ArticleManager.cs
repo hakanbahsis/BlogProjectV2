@@ -91,9 +91,9 @@ public class ArticleManager : IArticleService
             await _unitOfWork.GetRepository<Image>().AddAsync(image);
             article.ImageId = image.Id;
         }
-       // _mapper.Map(articleUpdateDto, article);
-       article.Title = articleUpdateDto.Title;
-        article.Content= articleUpdateDto.Content;
+       //_mapper.Map(articleUpdateDto, article);
+        article.Title = articleUpdateDto.Title;
+        article.Content = articleUpdateDto.Content;
         article.CategoryId = articleUpdateDto.CategoryId;
         article.ModifiedDate = DateTime.Now;
         article.ModifiedBy = userEmail;

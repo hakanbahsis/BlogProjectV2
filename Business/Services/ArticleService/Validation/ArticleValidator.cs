@@ -1,12 +1,12 @@
 ﻿using Entity.Entities;
 using FluentValidation;
 
-namespace Business.Services.Validation;
-public class ArticleValidator:AbstractValidator<Article>
+namespace Business.Services.ArticleService.Validation;
+public class ArticleValidator : AbstractValidator<Article>
 {
     public ArticleValidator()
     {
-        RuleFor(x=>x.Title)
+        RuleFor(x => x.Title)
             .NotEmpty()
             .NotNull()
             .MinimumLength(3)

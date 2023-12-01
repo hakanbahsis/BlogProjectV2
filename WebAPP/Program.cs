@@ -1,3 +1,4 @@
+using Business.Describers;
 using Business.Extensions;
 using DataAccess.Context;
 using DataAccess.Extensions;
@@ -29,6 +30,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
     opt.Password.RequireUppercase = false;
 })
     .AddRoleManager<RoleManager<AppRole>>()
+    .AddErrorDescriber<CustomIdentityErrorDescriber>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
