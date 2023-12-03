@@ -17,6 +17,10 @@ public static class Messages
         {
             return $"{articleTitle} başlıklı makale başarıyla silinmiştir.";
         }
+        public static string UndoDelete(string articleTitle)
+        {
+            return $"{articleTitle} başlıklı makale başarıyla geri alınmıştır.";
+        }
     } 
     public static class Category
     {
@@ -32,6 +36,10 @@ public static class Messages
         public static string Delete(string name)
         {
             return $"{name} isimli kategori başarıyla silinmiştir.";
+        }
+        public static string UndoDelete(string name)
+        {
+            return $"{name} isimli kategori başarıyla geri alınmıştır.";
         }
     }
     public static class User
