@@ -27,7 +27,7 @@ public class EfEntityRepository<T> : IEntityRepository<T> where T : class, IEnti
     }
     public async Task<T> UpdateAsync(T entity)
     {
-        await Task.Run(()=>Table.Update(entity));
+        await Task.Run(() => Table.Update(entity));
         return entity;
     }
     public async Task DeleteAsync(T entity)
@@ -42,7 +42,11 @@ public class EfEntityRepository<T> : IEntityRepository<T> where T : class, IEnti
 
     public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null)
     {
-        return await Table.CountAsync(predicate);
+        if (predicate is not null)
+        {
+            return await Table.CountAsync(predicate);
+        }
+        return await Table.CountAsync();
     }
 
 

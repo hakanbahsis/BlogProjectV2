@@ -15,11 +15,23 @@ namespace WebAPP.Controllers
             _logger = logger;
             _articleService = articleService;
         }
-
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(Guid? categoryId,int currentPage=1,int pageSize=3,bool isAscending=false)
         {
-            var articles=await _articleService.GetAllArticlesWithCategoryNonDeletedAsync();
+            var articles=await _articleService.GetAllByPagingAsync(categoryId,currentPage,pageSize,isAscending);
             return View(articles);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Search(string keyword,int currentPage=1,int pageSize=3,bool isAscending=false)
+        {
+            var articles=await _articleService.SourceAsync(keyword,currentPage,pageSize,isAscending);
+            return View(articles);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Detail(Guid articleId)
+        {
+            var article = await _articleService.GetArticlesWithCategoryNonDeletedAsync(articleId);
+            return View(article);
         }
 
         public IActionResult Privacy()

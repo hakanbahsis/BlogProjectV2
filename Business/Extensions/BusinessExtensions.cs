@@ -4,6 +4,8 @@ using Business.Services.ArticleService.Concrete;
 using Business.Services.ArticleService.Validation;
 using Business.Services.CategoryService.Abstract;
 using Business.Services.CategoryService.Concrete;
+using Business.Services.DashboardService.Abstract;
+using Business.Services.DashboardService.Concrete;
 using Business.Services.UserService.Abstract;
 using Business.Services.UserService.Concrete;
 using FluentValidation.AspNetCore;
@@ -31,6 +33,7 @@ public static class BusinessExtensions
         services.AddScoped<IArticleService, ArticleManager>();
         services.AddScoped<ICategoryService, CategoryManager>();
         services.AddScoped<IUserService, UserManager>();
+        services.AddScoped<IDashboardService, DashboardManager>();
         services.AddScoped<IImageHelper, ImageHelper>();
 
         return services;
