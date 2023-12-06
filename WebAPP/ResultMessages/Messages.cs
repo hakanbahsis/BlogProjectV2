@@ -57,5 +57,17 @@ public static class Messages
         {
             return $"{userName} email adresli kullanıcı başarıyla silinmiştir.";
         }
+        public static string ChangedPasswordAndProfile()
+        {
+            return $"Şifreniz ve bilgileriniz başarıyla güncellenmiştir.";
+        }
+        public static string ChangedProfile()
+        {
+            return $"Bilgileriniz başarıyla güncellenmiştir.";
+        } 
+        public static string ErrorChangedProfile()
+        {
+            return $"Bilgileriniz güncellenirken bir hata oluştu.";
+        }
     }
 }
