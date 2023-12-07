@@ -1,0 +1,24 @@
+﻿@using Entity.DTOs.Categories;
+@model List<CategoryDto>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="col-lg-12">
+    <div class="sidebar-item categories">
+        <div class="sidebar-heading">
+            <h2>Kategoriler</h2>
+        </div>
+        <div class="content">
+            <ul>
+                @foreach (var item in Model)
+                {
+                  @* <li><a href="/Home/Search?Keyword=@item.Name.ToLower()">@item.Name</a></li>*@
+                   <li><a asp-controller="Home" asp-action="Index" asp-route-categoryId="@item.Id"> @item.Name</a></li>
+                }
+               
+            </ul>
+        </div>
+    </div>
+</div>
